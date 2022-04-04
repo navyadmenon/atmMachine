@@ -34,7 +34,7 @@ public class AtmController {
 	 * excludes overdraft.
 	 * 
 	 * @param data
-	 *            which is of type RequestData that contain accountNo and pin
+	 *            which is of type RequestData that contain {"accountNo", "pin"}
 	 *            passed by the user
 	 * @return ResponseEntity: On success it returns BalanceResponse object with
 	 *         details like accountNo and balance. On error it returns
@@ -56,8 +56,8 @@ public class AtmController {
 	 * The POST controller method to withdraw money as requested by user.
 	 * 
 	 * @param data
-	 *            which is of type RequestData that contain accountNo, pin and
-	 *            amount requested by the user
+	 *            which is of type RequestData that contain {"accountNo", "pin", "amount"} 
+	 *            requested by the user
 	 * @return ResponseEntity: On success it returns DispenseResponse object
 	 *         that mention dispensed currency/notes details and balance amount.
 	 *         On error it returns ErrorResponse object with proper error

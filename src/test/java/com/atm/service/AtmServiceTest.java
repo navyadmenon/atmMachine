@@ -100,7 +100,7 @@ public class AtmServiceTest {
 		when(denominationService.totalAmountInAtm()).thenReturn(new BigDecimal(1500));
 		
 		RequestData data = getData();
-		data.setAmount(823);
+		data.setAmount(234);
 		 assertThatThrownBy(() -> atmService.withdraw(data))
 		 .isInstanceOf(AtmException.class)
 		 .hasMessage(AtmConstant.INVALID_AMOUNT);
@@ -112,11 +112,13 @@ public class AtmServiceTest {
 	 */
 	@Test
 	public void testWithdraw_insufficientBal() {
-		when(atmRepo.findByAcnoAndPin(Mockito.anyLong(), Mockito.anyInt())).thenReturn(getAccount());
+		Account ac = getAccount();
+		ac.setBalance(new BigDecimal(150));
+		when(atmRepo.findByAcnoAndPin(Mockito.anyLong(), Mockito.anyInt())).thenReturn(ac);
 		when(denominationService.totalAmountInAtm()).thenReturn(new BigDecimal(1500));
 		
 		RequestData data = getData();
-		data.setAmount(1100);
+		data.setAmount(450);
 		 assertThatThrownBy(() -> atmService.withdraw(data))
 		 .isInstanceOf(AtmException.class)
 		 .hasMessage(AtmConstant.INSUFFICIENT_BALANCE);
@@ -129,10 +131,10 @@ public class AtmServiceTest {
 	@Test
 	public void testWithdraw_insufficientAmtinAtm() {
 		when(atmRepo.findByAcnoAndPin(Mockito.anyLong(), Mockito.anyInt())).thenReturn(getAccount());
-		when(denominationService.totalAmountInAtm()).thenReturn(new BigDecimal(1500));
+		when(denominationService.totalAmountInAtm()).thenReturn(new BigDecimal(400));
 		
 		RequestData data = getData();
-		data.setAmount(2000);
+		data.setAmount(450);
 		 assertThatThrownBy(() -> atmService.withdraw(data))
 		 .isInstanceOf(AtmException.class)
 		 .hasMessage(AtmConstant.INSUFFICIENT_AMT);
@@ -156,7 +158,7 @@ public class AtmServiceTest {
 			
 			e.printStackTrace();
 		}
-		assertEquals(new BigDecimal(250),response.getBalance() );
+		assertEquals(new BigDecimal(400),response.getBalance() );
 	}
 	
 	
@@ -166,7 +168,7 @@ public class AtmServiceTest {
 		RequestData data = new RequestData();
 		data.setAccountNo(123456789);
 		data.setPin(1234);
-		data.setAmount(550);
+		data.setAmount(400);
 		return data;
 		
 	}

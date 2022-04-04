@@ -15,6 +15,7 @@ import com.atm.model.Denomination;
 import com.atm.model.DispenseResponse;
 import com.atm.model.RequestData;
 import com.atm.repository.AtmRepository;
+import com.atm.util.AtmConstant;
 import com.atm.util.ValidationUtil;
 
 /**
@@ -44,7 +45,7 @@ public class AtmServiceImpl implements AtmService {
 		try {
 			Account ac = atmRepository.findByAcnoAndPin(data.getAccountNo(), data.getPin());
 			ValidationUtil.validateAccDetails(ac);
-			return new BalanceResponse(ac.getAcno(), ac.getBalance());
+			return new BalanceResponse(ac.getAcno(), ac.getBalance(), AtmConstant.MAX_WITHDRAW_MONEY);
 		} catch (AtmException e) {
 			throw e;
 

@@ -19,9 +19,10 @@ public class ValidationUtil {
 
 	/**
 	 * The method performs below validation: 
-	 * 1. If the requested amount is valid amount and multiple of lowest denomination 
-	 * 2. If the atm holds enough money to dispense the requested amount 
-	 * 3. If the account holder has enough balance in opening balance and overdraft limit
+	 * 1. If amount exceed limit of max allowed for withdraw
+	 * 2. If the requested amount is valid amount and multiple of lowest denomination 
+	 * 3. If the atm holds enough money to dispense the requested amount 
+	 * 4. If the account holder has enough balance in opening balance and overdraft limit
 	 * 
 	 * @param ac
 	 * @param data
@@ -30,6 +31,9 @@ public class ValidationUtil {
 	 */
 	public static void validateAmount(Account ac, RequestData data, BigDecimal totalamt) throws AtmException {
 		try {
+			if( data.getAmount() > AtmConstant.MAX_WITHDRAW_MONEY) {
+				throw new AtmException(AtmConstant.MAX_WITHDRAW_LIMIT);
+			}
 			if (0 == data.getAmount() || data.getAmount() % DenominationEnum.FIVE.getAmountValue() != 0) {
 				throw new AtmException(AtmConstant.INVALID_AMOUNT);
 			}
