@@ -8,8 +8,8 @@ User request for balance check.
         
         Request body : 
             {  
-              "accountNo": Number,  
-               "pin": Number
+              "accountNo": integer,  
+               "pin": integer
             }
             
 User request a withdrawal. If successful - details of the notes that would be dispensed along with remaining balance. 
@@ -17,7 +17,7 @@ User request a withdrawal. If successful - details of the notes that would be di
        
                 Request body : 
                     {  
-                      "accountNo": Number,  
-                       "pin": Number,
-                       "amount" : Number
+                      "accountNo": integer,  
+                       "pin": integer,
+                       "amount" : integer
                     }
