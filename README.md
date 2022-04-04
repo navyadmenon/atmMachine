@@ -1,5 +1,8 @@
 # atmMachine
-The project performs basic ATM operation of check balance and withdraw money
+The project performs basic ATM operation of check balance and withdraw money. 
+
+
+
 User request for balance check. 
         The api url is : /atm/balance
         
