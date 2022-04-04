@@ -1,5 +1,5 @@
 # atmMachine
-The project performs basic ATM operation of check balance and withdraw money through API url request. 
+The project performs basic ATM operation of check balance and withdraw money through API url request. The application has used in-memory databse H2.
 
 
 
