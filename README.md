@@ -8,7 +8,7 @@ User request for balance check.
         
         Request body : 
             {  
-              "accountNo": integer,  
+              "accountNo": number,  
                "pin": integer
             }
             
@@ -17,7 +17,7 @@ User request a withdrawal. If successful - details of the notes that would be di
        
                 Request body : 
                     {  
-                      "accountNo": integer,  
+                      "accountNo": number,  
                        "pin": integer,
                        "amount" : integer
                     }
