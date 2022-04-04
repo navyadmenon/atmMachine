@@ -4,7 +4,7 @@ The project performs basic ATM operation of check balance and withdraw money thr
 
 
 User request for balance check. 
-        The api url is : /atm/balance
+        The api url path is : /atm/balance ; method : POST   
         
         Request body : 
             {  
@@ -13,7 +13,7 @@ User request for balance check.
             }
             
 User request a withdrawal. If successful - details of the notes that would be dispensed along with remaining balance. 
-       The api url is : /atm/dispense
+       The api url path is : /atm/dispense;  method : POST   
        
                 Request body : 
                     {  
